@@ -12,5 +12,6 @@
   "description": "",
   "dependencies": {
     "vite": "^5.2.8"
-  }
+  },
+  "type": "module"
 }
