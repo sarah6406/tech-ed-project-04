@@ -1,0 +1,15 @@
+body {
+    background-color: black;
+    color: white;
+    font-family: monospace;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  width: 50%;
+}
+
+button {
+  margin-top: 5px;
+}
