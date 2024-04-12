@@ -93,5 +93,5 @@ displayComment();
 //   }
 // }
 
-// // Call the seedData function to execute the seeding process
+// // Call the displayComment function to execute the seeding process
 // displayComment();

@@ -24,7 +24,39 @@ app.get("/", (req, res) => {
 //   // here is the response. At the moment we are just sending back what the client sent with their own request
 //   res.json(newMessage);
 // });
-// add app.get("/getmessage") -- query database for all messages and return them
+
+// data for testing purposes on get request
+// const messages = [
+//   { username: "sarah123", message: "Hello, world!" },
+//   { username: "bob", message: "Testing, testing, 123. " },
+// ];
+
+// add app.get("/getmessage") -- function to query database for all messages and return them
+
+// function to try and append messages to the browser window!!!
+// function insertMessageFunction() {
+//   const newMessage = db
+//     .prepare("INSERT INTO comments (username, message) VALUES (?, ?)")
+//     .run(messageToAppend.username, messageToAppend.message);
+//   console.log(newMessage);
+// }
+// const insertMessage = insertToDB.run(
+//   messageToAppend.username,
+//   messageToAppend.message
+// );
+// insertMessage();
+
+function appendMessagesFromDB() {
+  const messagesToAppend = db.prepare(`SELECT * FROM comments`).all();
+  return messagesToAppend;
+}
+
+app.get("/getmessage", (req, res) => {
+  const comments = appendMessagesFromDB();
+  res.json(comments);
+  console.log(comments);
+  // res.json(req.body);
+});
 
 app.post("/getmessage", (req, res) => {
   const messageToAppend = req.body;
@@ -32,7 +64,7 @@ app.post("/getmessage", (req, res) => {
   function insertMessage() {
     const newMessage = db
       .prepare("INSERT INTO comments (username, message) VALUES (?, ?)")
-      .run(messageToAppend.username, messageToAppend.message); // NEED HELP HEREEEEEEE!!!!
+      .run(messageToAppend.username, messageToAppend.message);
     console.log(newMessage);
   }
   //   const insertMessage = insertToDB.run(username, message);

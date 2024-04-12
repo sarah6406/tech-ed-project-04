@@ -2,7 +2,7 @@
 const form = document.getElementById("message-form");
 const appendedMessages = document.getElementById("appended-messages");
 
-//handling event on button click??
+//handling event on button click
 async function handleSubmit(e) {
   e.preventDefault(); // if event does not get explicitly handled (is the following allowing for explicit handling??), default action should not be taken as it normally would be
   const username = e.target.username.value;
@@ -25,27 +25,32 @@ async function handleSubmit(e) {
     },
   });
   console.log(await response.json());
+  appendMessagesToUI();
+  form.reset();
 }
 
 // function for getting messages to append messages to ul from api
-async function appendMessages() {
+async function appendMessagesToUI() {
   const response = await fetch("http://localhost:5000/getmessage");
   const messages = await response.json();
   console.log(messages);
 
+  appendedMessages.innerHTML = "";
+
   //put messages onto the page
-  const h2 = document.createElement("h2"); // username
-  const p = document.createElement("p"); // message
-
-  h2.textContent = messages.username;
-  p.textContent = messages.message;
-
-  appendedMessages.appendChild(h2); // appending h2 to div .appendedMessages
-  appendedMessages.appendChild(p); // appending p to div .appendedMessages
+  messages.forEach((message) => {
+    const h2 = document.createElement("h2"); // username
+    const p = document.createElement("p"); // message
+    h2.textContent = `${message.username} says...`;
+    p.textContent = message.message;
+    h2.style.fontStyle = "italic";
+    appendedMessages.appendChild(h2); // appending h2 to div .appendedMessages
+    appendedMessages.appendChild(p); // appending p to div .appendedMessages
+  });
 }
 
 form.addEventListener("submit", handleSubmit);
-appendMessages();
+appendMessagesToUI();
 
 // // tim's code for reference
 // const gamesWrapper = document.getElementById("gamesWrapper");

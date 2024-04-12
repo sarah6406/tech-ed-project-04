@@ -1,19 +1,32 @@
 body {
-    background-color: black;
-    color: white;
-    font-family: monospace;
+  background-color: black;
+  color: white;
+  font-family: monospace;
+  margin: 10px;
+  height: 100vh;
+  width: 100vw;
 }
-form {
+
+form,
+h1 {
   display: flex;
   flex-direction: column;
   height: auto;
   width: 50%;
+  margin: auto;
 }
-
+label {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
 button {
+  background: white;
   margin-top: 5px;
+  padding: 10px;
 }
 
-div {
-    background-color: red;
+button:hover {
+  background-color: black;
+  color: white;
+  cursor: pointer;
 }
