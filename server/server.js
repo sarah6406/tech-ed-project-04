@@ -6,7 +6,7 @@ import cors from "cors"; // import cors from the CORS module that was installed
 
 const db = new Database("database.db");
 const app = express(); // creating an app using the express object
-// const PORT = 5000; // specifying the port number
+const PORT = 5000; // specifying the port number
 app.use(express.json()); // accept json in requests
 app.use(cors()); // allows client to communicate with the server without it being blocked
 
@@ -51,14 +51,14 @@ function appendMessagesFromDB() {
   return messagesToAppend;
 }
 
-app.get("https://tech-ed-project-04-1.onrender.com", (req, res) => {
+app.get("/getmessage", (req, res) => {
   const comments = appendMessagesFromDB();
   res.json(comments);
   console.log(comments);
   // res.json(req.body);
 });
 
-app.post("https://tech-ed-project-04-1.onrender.com", (req, res) => {
+app.post("/getmessage", (req, res) => {
   const messageToAppend = req.body;
   // insert new message into database using data from req.body
   function insertMessage() {
@@ -79,8 +79,6 @@ app.post("https://tech-ed-project-04-1.onrender.com", (req, res) => {
 //   res.json({ status: "Message received!" }); // this is seen in postman when we do a POST request on localhost:5000/message - we will only see GET requests on the webpage
 // });
 
-app.listen("https://tech-ed-project-04-1.onrender.com", () => {
-  console.log(
-    `Server is running on port: https://tech-ed-project-04-1.onrender.com`
-  );
+app.listen(PORT, () => {
+  console.log(`Server is running on port: ${PORT}`);
 });

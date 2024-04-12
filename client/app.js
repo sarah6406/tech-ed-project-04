@@ -14,7 +14,7 @@ async function handleSubmit(e) {
   //   });
 
   //make a request to the server with our form data as the body
-  const response = await fetch("https://tech-ed-project-04-1.onrender.com", {
+  const response = await fetch("http://localhost:5000/getmessage", {
     method: "POST",
     body: JSON.stringify({
       username: username,
@@ -31,7 +31,7 @@ async function handleSubmit(e) {
 
 // function for getting messages to append messages to ul from api
 async function appendMessagesToUI() {
-  const response = await fetch("https://tech-ed-project-04-1.onrender.com");
+  const response = await fetch("http://localhost:5000/getmessage");
   const messages = await response.json();
   console.log(messages);
 
