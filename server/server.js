@@ -58,7 +58,7 @@ app.get("https://tech-ed-project-04-1.onrender.com", (req, res) => {
   // res.json(req.body);
 });
 
-app.post("/getmessage", (req, res) => {
+app.post("https://tech-ed-project-04-1.onrender.com", (req, res) => {
   const messageToAppend = req.body;
   // insert new message into database using data from req.body
   function insertMessage() {
