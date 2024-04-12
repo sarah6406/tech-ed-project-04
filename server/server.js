@@ -79,6 +79,8 @@ app.post("/getmessage", (req, res) => {
 //   res.json({ status: "Message received!" }); // this is seen in postman when we do a POST request on localhost:5000/message - we will only see GET requests on the webpage
 // });
 
-app.listen(PORT, () => {
-  console.log(`Server is running on port: ${PORT}`);
+app.listen("https://tech-ed-project-04-1.onrender.com/", () => {
+  console.log(
+    `Server is running on port: https://tech-ed-project-04-1.onrender.com/`
+  );
 });
