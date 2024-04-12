@@ -51,7 +51,7 @@ function appendMessagesFromDB() {
   return messagesToAppend;
 }
 
-app.get("/getmessage", (req, res) => {
+app.get("https://tech-ed-project-04-1.onrender.com", (req, res) => {
   const comments = appendMessagesFromDB();
   res.json(comments);
   console.log(comments);
