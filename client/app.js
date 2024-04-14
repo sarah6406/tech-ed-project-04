@@ -1,7 +1,8 @@
 //client side - frontend
 const form = document.getElementById("message-form");
 const appendedMessages = document.getElementById("appended-messages");
-
+const VITE_API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
+console.log(VITE_API_URL);
 //handling event on button click
 async function handleSubmit(e) {
   e.preventDefault(); // if event does not get explicitly handled (is the following allowing for explicit handling??), default action should not be taken as it normally would be
@@ -14,7 +15,7 @@ async function handleSubmit(e) {
   //   });
 
   //make a request to the server with our form data as the body
-  const response = await fetch("http://localhost:5000/getmessage", {
+  const response = await fetch(`${VITE_API_URL}/getmessage`, {
     method: "POST",
     body: JSON.stringify({
       username: username,
@@ -31,7 +32,7 @@ async function handleSubmit(e) {
 
 // function for getting messages to append messages to ul from api
 async function appendMessagesToUI() {
-  const response = await fetch("http://localhost:5000/getmessage");
+  const response = await fetch(`${VITE_API_URL}/getmessage`);
   const messages = await response.json();
   console.log(messages);
 
