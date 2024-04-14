@@ -6,7 +6,7 @@ import cors from "cors"; // import cors from the CORS module that was installed
 
 const db = new Database("database.db");
 const app = express(); // creating an app using the express object
-// const PORT = 5000; // specifying the port number
+const PORT = 5000; // specifying the port number
 app.use(express.json()); // accept json in requests
 app.use(cors()); // allows client to communicate with the server without it being blocked
 
