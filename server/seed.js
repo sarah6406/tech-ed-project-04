@@ -25,7 +25,7 @@ function displayComment() {
     `
             CREATE TABLE IF NOT EXISTS comments (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
-                username TEXT NOT NULL UNIQUE,
+                username TEXT NOT NULL,
                 message TEXT
             )
         `
